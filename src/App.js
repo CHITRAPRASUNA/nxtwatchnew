@@ -1,7 +1,6 @@
-import './App.css'
 import {Component} from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
-import ThemeContext from './context/ThemeContext'
+import {Route, Switch, Redirect} from 'react-router-dom'
+
 import ProtectedRoute from './components/ProtectedRoute'
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
@@ -11,10 +10,14 @@ import GamingVideos from './components/GamingVideos'
 import SavedVideos from './components/SavedVideos'
 import NotFound from './components/NotFound'
 
+import ThemeContext from './context/ThemeContext'
+
+import './App.css'
+
 class App extends Component {
   state = {
-    isDarkTheme: false,
     savedVideos: [],
+    isDarkTheme: false,
     activeTab: 'Home',
   }
 
@@ -30,9 +33,7 @@ class App extends Component {
 
   addVideo = video => {
     const {savedVideos} = this.state
-
     const index = savedVideos.findIndex(eachVideo => eachVideo.id === video.id)
-
     if (index === -1) {
       this.setState({savedVideos: [...savedVideos, video]})
     } else {
@@ -50,17 +51,16 @@ class App extends Component {
   }
 
   render() {
-    const {isDarkTheme, savedVideos, activeTab} = this.state
-
+    const {savedVideos, isDarkTheme, activeTab} = this.state
     return (
       <ThemeContext.Provider
         value={{
-          isDarkTheme,
           savedVideos,
+          isDarkTheme,
           activeTab,
           toggleTheme: this.toggleTheme,
-          changeActiveTab: this.changeTab,
           addVideo: this.addVideo,
+          changeTab: this.changeTab,
         }}
       >
         <Switch>
