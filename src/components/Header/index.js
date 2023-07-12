@@ -1,27 +1,26 @@
 import {withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Popup from 'reactjs-popup'
-
+import {GiHamburgerMenu} from 'react-icons/gi'
 import {BsMoon, BsBrightnessHigh} from 'react-icons/bs'
-
 import {FiLogOut} from 'react-icons/fi'
-
 import ThemeContext from '../../context/ThemeContext'
 
 import {
-  NavHeader,
+  NavbarBg,
+  MenuIcon,
   LogoLink,
-  WebsiteLogo,
-  OptionsContainer,
-  DarkModeButton,
-  UserProfileImage,
+  HeaderLogo,
+  ActionsContainer,
+  ThemeButton,
+  LogoutIconButton,
   LogoutButton,
+  ProfileImage,
   ModalContainer,
   CloseButton,
   ConfirmButton,
   ModalDesc,
   ButtonsContainer,
-  DesktopLogoutButton,
 } from './styledComponents'
 
 const Header = props => (
@@ -29,9 +28,9 @@ const Header = props => (
     {value => {
       const {isDarkTheme, toggleTheme} = value
       const color = isDarkTheme ? '#ffffff' : '#00306e'
-      const bgColor = isDarkTheme ? '#231f20' : '#f1f5f9'
+      const bgColor = isDarkTheme ? '#181818' : '#ffffff'
 
-      const onChangeTheme = () => {
+      const onClickChangeTheme = () => {
         toggleTheme()
       }
 
@@ -42,9 +41,9 @@ const Header = props => (
       }
 
       return (
-        <NavHeader bgColor={bgColor}>
+        <NavbarBg bgColor={bgColor}>
           <LogoLink to="/">
-            <WebsiteLogo
+            <HeaderLogo
               src={
                 isDarkTheme
                   ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
@@ -53,22 +52,25 @@ const Header = props => (
               alt="website logo"
             />
           </LogoLink>
-          <OptionsContainer>
-            <DarkModeButton
+          <ActionsContainer>
+            <ThemeButton
               type="button"
-              onClick={onChangeTheme}
               data-testid="theme"
+              onClick={onClickChangeTheme}
             >
               {isDarkTheme ? (
                 <BsBrightnessHigh color="#ffffff" size={25} />
               ) : (
                 <BsMoon size={25} />
               )}
-            </DarkModeButton>
-            <UserProfileImage
+            </ThemeButton>
+            <ProfileImage
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
               alt="profile"
             />
+            <MenuIcon>
+              <GiHamburgerMenu size={25} />
+            </MenuIcon>
             <Popup
               modal
               trigger={
@@ -99,9 +101,9 @@ const Header = props => (
             <Popup
               modal
               trigger={
-                <DesktopLogoutButton type="button">
+                <LogoutIconButton type="button">
                   <FiLogOut size={25} color={color} />
-                </DesktopLogoutButton>
+                </LogoutIconButton>
               }
               className="popup-content"
             >
@@ -124,8 +126,8 @@ const Header = props => (
                 </ModalContainer>
               )}
             </Popup>
-          </OptionsContainer>
-        </NavHeader>
+          </ActionsContainer>
+        </NavbarBg>
       )
     }}
   </ThemeContext.Consumer>

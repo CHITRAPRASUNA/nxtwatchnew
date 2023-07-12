@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
-export const NavHeader = styled.nav`
+export const NavbarBg = styled.nav`
   position: fixed;
   top: 0;
   display: flex;
@@ -16,31 +16,49 @@ export const NavHeader = styled.nav`
     padding-right: 30px;
   }
 `
-
-export const LogoLink = styled(Link)`
-  text-decoration: none;
-`
-
-export const WebsiteLogo = styled.img`
-  width: 90px;
+export const HeaderLogo = styled.img`
+  width: 80px;
+  height: 30px;
   @media screen and (min-width: 768px) {
-    width: 110px;
+    width: 100px;
+    height: 40px;
   }
 `
 
-export const OptionsContainer = styled.div`
+export const ActionsContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
 `
-
-export const DarkModeButton = styled.button`
-  background-color: transparent;
+export const ThemeButton = styled.button`
+  background: none;
   border: none;
   margin-right: 10px;
 `
-
-export const UserProfileImage = styled.img`
+export const LogoutButton = styled.button`
+  border: 1px solid;
+  font-family: 'Roboto';
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  background-color: ${props => props.bgColor};
+  color: ${props => props.color};
+  border-color: ${props => props.color};
+  margin-left: 6px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`
+export const LogoutIconButton = styled.button`
+  background: none;
+  border: none;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`
+export const ProfileImage = styled.img`
   width: 30px;
   height: 30px;
   margin-right: 10px;
@@ -48,29 +66,12 @@ export const UserProfileImage = styled.img`
     display: none;
   }
 `
-
-export const LogoutButton = styled.button`
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-color: ${props => props.bgColor};
-  color: ${props => props.color};
-  border-color: ${props => props.color};
+export const MenuIcon = styled.div`
+  margin-right: 10px;
   @media screen and (min-width: 768px) {
     display: none;
   }
 `
-
-export const DesktopLogoutButton = styled.button`
-  border: none;
-  background: none;
-
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-`
-
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -85,19 +86,18 @@ export const ModalContainer = styled.div`
     width: 400px;
   }
 `
-
 export const CloseButton = styled.button`
   background-color: transparent;
   border: 1px solid grey;
   padding: 8px;
   padding-right: 12px;
-  padding-right: 12px;
+  padding-left: 12px;
   color: grey;
   margin: 12px;
   outline: none;
   cursor: pointer;
   border-radius: 6px;
-  font-family: 'Roboto';
+  font-family: Roboto;
   font-weight: bold;
   font-size: 12px;
   @media screen and (min-width: 768px) {
@@ -107,7 +107,6 @@ export const CloseButton = styled.button`
     padding-left: 20px;
   }
 `
-
 export const ConfirmButton = styled.button`
   align-self: flex-end;
   background-color: #3b82f6;
@@ -120,7 +119,7 @@ export const ConfirmButton = styled.button`
   outline: none;
   cursor: pointer;
   border-radius: 6px;
-  font-family: 'Roboto';
+  font-family: Roboto;
   font-weight: bold;
   font-size: 12px;
   @media screen and (min-width: 768px) {
@@ -136,7 +135,7 @@ export const ModalDesc = styled.p`
   margin: 10px;
   color: black;
   text-align: center;
-  @media screen and(min-width:768px) {
+  @media screen and (min-width: 768px) {
     font-size: 20px;
   }
 `
@@ -144,4 +143,7 @@ export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`
+export const LogoLink = styled(Link)`
+  text-decoration: none;
 `

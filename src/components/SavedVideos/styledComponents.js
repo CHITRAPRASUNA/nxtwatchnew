@@ -29,12 +29,11 @@ export const SavedTitleIconContainer = styled.div`
   }
 `
 export const SavedText = styled.h1`
-  font-family: 'Roboto';
+  font-family: Roboto;
   font-size: 25px;
   color: ${props => props.color};
   @media screen and (min-width: 768px) {
     font-size: 35px;
-  }
 `
 export const SavedVideoList = styled.ul`
   list-style-type: none;
@@ -58,13 +57,14 @@ export const NoSavedVideosImage = styled.img`
   }
 `
 export const NoSavedVideosHeading = styled.h1`
-  font-family: 'Roboto';
+  font-family: Roboto;
   font-size: 25px;
   color: ${props => props.headingColor};
   text-align: center;
 `
+
 export const NoSavedVideosNote = styled.p`
-  font-family: 'Roboto';
+  font-family: Roboto;
   font-size: 18px;
   color: ${props => props.noteColor};
   text-align: center;
