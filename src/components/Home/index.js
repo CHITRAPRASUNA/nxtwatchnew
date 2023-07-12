@@ -1,12 +1,14 @@
 import {Component} from 'react'
+
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 
 import {AiOutlineClose, AiOutlineSearch} from 'react-icons/ai'
 
+import ThemeContext from '../../context/ThemeContext'
+
 import Header from '../Header'
 import NavigationSideBar from '../NavigationSideBar'
-import ThemeContext from '../../context/ThemeContext'
 import HomeVideos from '../HomeVideos'
 import FailureView from '../FailureView'
 
@@ -92,16 +94,16 @@ class Home extends Component {
     this.setState({searchInput: ''}, this.getVideos)
   }
 
+  renderVideosView = () => {
+    const {homeVideos} = this.state
+    return <HomeVideos homeVideos={homeVideos} onRetry={this.onRetry} />
+  }
+
   renderLoadingView = () => (
     <LoaderContainer data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </LoaderContainer>
   )
-
-  renderVideosView = () => {
-    const {homeVideos} = this.state
-    return <HomeVideos homeVideos={homeVideos} onRetry={this.onRetry} />
-  }
 
   renderFailureView = () => <FailureView onRetry={this.onRetry} />
 
@@ -129,7 +131,7 @@ class Home extends Component {
 
           const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
           const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
-          const display = bannerDisplay === 'flex' ? 'flex' : 'none'
+          const display = bannerDisplay
 
           return (
             <>
@@ -165,6 +167,7 @@ class Home extends Component {
                     color={textColor}
                   />
                   <SearchIconContainer
+                    type="button"
                     data-testid="searchButton"
                     onClick={this.getSearchResults}
                   >
